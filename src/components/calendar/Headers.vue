@@ -1,5 +1,5 @@
 <template>
-    <div class="cal-headers" style="display: flex; flex-direction: column;">
+    <div class="cal-headers" style="display: inline-flex; flex-direction: column;">
 
         <!-- DATE HEADERS -->
         <div style="display: flex;">
@@ -9,7 +9,7 @@
                      class="cal-date-header"
                      :class="{'odd': index % 2 === 0 }"
                      :style="{'flex': '0 0 ' + (dateLength * timeBoxLength) + 'px', 'height': timeBoxHeight + 'px', 'line-height': timeBoxHeight + 'px'}">
-                    <span style="position: sticky; left: 0;">{{header.date}}</span>
+                    <span>{{header.date}}</span>
                 </div>
             </div>
         </div>
@@ -53,6 +53,7 @@
     .cal-date-header
         background-color steelblue
         color white
+        text-align center
 
     .cal-date-header.odd
         background-color darkcyan

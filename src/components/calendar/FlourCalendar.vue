@@ -22,7 +22,7 @@
             <div v-for="resource in resources" :key="'r:' + resource.id"
                  style="display: flex;">
                 <!-- CELLS -->
-                <div style="flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px;">
+                <div style="display: inline-flex; flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px;">
                     <span>{{resource.name}}</span>
                 </div>
 
@@ -50,7 +50,7 @@
 
 <script>
     import '@fortawesome/fontawesome-free/css/all.css';
-    
+
     import moment from 'moment';
     import Event from './Event';
     import Headers from './Headers';
