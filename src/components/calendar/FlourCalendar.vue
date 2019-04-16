@@ -23,7 +23,7 @@
                  style="display: flex;">
                 <!-- CELLS -->
                 <div :class="{'current-active': resource.id === currentResource}"
-                     style="display: inline-flex; flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px;">
+                     style="flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px; text-align: center;">
                     <span>{{resource.name}}</span>
                 </div>
 
@@ -68,7 +68,6 @@
             Toolbar
         },
         created: function() {
-            // this.loadHeaders(this.currentDate);
         },
         data: function() {
             const TIME_STEP = 4;
@@ -95,7 +94,6 @@
         methods: {
             changeDate: function(newDate) {
                 alert(newDate);
-                // this.loadHeaders(newDate);
             }
         },
         computed: {

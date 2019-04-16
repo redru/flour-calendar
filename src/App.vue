@@ -1,8 +1,10 @@
 <template>
   <div id="app" style="display: flex; justify-content: center;">
-    <FlourCalendar :groups="groups"
-                   :events="events"
-    ></FlourCalendar>
+    <div style="max-width: 80%;">
+      <FlourCalendar :groups="groups"
+                     :events="events"
+      ></FlourCalendar>
+    </div>
   </div>
 </template>
 
@@ -14,6 +16,15 @@
     name: 'app',
     components: {
       FlourCalendar
+    },
+    mounted: function() {
+      this.events = [{
+        id: 1,
+        room: { id: 1 },
+        customer: { name: 'Test Event' },
+        checkinDate: moment().hours(8).minutes(0).seconds(0).format(),
+        checkoutDate: moment().add(5, 'days').hours(16).minutes(0).seconds(0).format()
+      }];
     },
     data: function() {
       return {
@@ -45,24 +56,12 @@
           id: 9,
           name: 'Group 9'
         },],
-        events: [{
-          id: 1,
-          room: { id: 1 },
-          customer: { name: 'Luca Zenobi' },
-          checkinDate: moment().hours(10).minutes(0).seconds(0).format(),
-          checkoutDate: moment().add(5, 'days').hours(20).minutes(0).seconds(0).format()
-        }]
+        events: []
       }
     }
   }
 </script>
 
-<style>
-  body {
-    margin: 0;
-  }
+<style lang="stylus">
 
-  #app {
-    /*width: 80%;*/
-  }
 </style>

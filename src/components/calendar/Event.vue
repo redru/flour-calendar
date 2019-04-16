@@ -1,13 +1,11 @@
 <template>
     <div class="calendar-event"
-         :style="{'top': positioning.y, 'left': positioning.x, 'width': positioning.width, 'height': positioning.height}">
-        <span>{{eventText}}</span>
+         :style="{'top': positioning.y, 'left': positioning.x, 'width': positioning.width, 'height': positioning.height, 'line-height': positioning.height}">
+        <span style="position: sticky; left: 0;">{{eventText}}</span>
     </div>
 </template>
 
 <script>
-    // import moment from 'moment';
-
     export default {
         props: {
             positioning: Object,
