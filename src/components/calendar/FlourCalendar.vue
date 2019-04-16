@@ -7,44 +7,55 @@
                  @on-back="changeDate('back')"
         ></Toolbar>
 
-        <!-- CONTENT -->
-        <div class="cal-scroller"
-             @mouseleave="currentResource = null; selectedDatetime = null;">
+        <div style="display: flex;">
 
-            <!-- HEADERS -->
-            <Headers :date-length="DATE_LENGTH"
-                     :time-box-length="TIME_BOX_LENGTH"
-                     :time-box-height="TIME_BOX_HEIGHT"
-                     :dateHeaders="dateHeaders"
-                     :sections="sections"
-                     :selectedDateTime="selectedDatetime"></Headers>
-            <!-- DATA  -->
-            <div v-for="resource in resources" :key="'r:' + resource.id"
-                 style="display: flex;">
-                <!-- CELLS -->
-                <div :class="{'current-active': resource.id === currentResource}"
-                     style="flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px; text-align: center;">
-                    <span>{{resource.name}}</span>
-                </div>
+            <div style="display: flex; flex-direction: column; flex: 0 0 130px;">
 
-                <div style="flex: 0 0 20px;"></div>
+                <div style="line-height: 50px; height: 50px;"></div>
 
-                <div style="flex: 1; display: flex;">
-                    <div v-for="section in sections" :key="'s:' + section.id"
-                         @mouseover="currentResource = resource.id; selectedDatetime = section.dateTime;"
-                         :id="resource.id + ':' + section.dateTime"
-                         class="data-row"
-                         style="flex: 0 0 80px; height: 50px; line-height: 50px; ">
+                <div v-for="resource in resources" :key="'r:' + resource.id">
+                    <!-- CELLS -->
+                    <div :class="{'current-active': resource.id === currentResource}"
+                         style="flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px; text-align: center;">
+                        <span>{{resource.name}}</span>
                     </div>
                 </div>
             </div>
 
-            <!-- EVENTS -->
-            <Event v-for="event in parsedEventsList" :key="event.id"
-                   :style="{'background-color': 'steelblue', 'border-radius': '10px', 'color': 'white'}"
-                   :text="event.title"
-                   :positioning="event.positioning"
-            ></Event>
+            <!-- CONTENT -->
+            <div class="cal-scroller"
+                 @mouseleave="currentResource = null; selectedDatetime = null;">
+
+                <!-- HEADERS -->
+                <Headers :date-length="DATE_LENGTH"
+                         :time-box-length="TIME_BOX_LENGTH"
+                         :time-box-height="TIME_BOX_HEIGHT"
+                         :dateHeaders="dateHeaders"
+                         :sections="sections"
+                         :selectedDateTime="selectedDatetime"></Headers>
+
+                <!-- DATA  -->
+                <div v-for="resource in resources" :key="'r:' + resource.id"
+                     style="display: flex;">
+
+                    <div style="flex: 1; display: flex;">
+                        <div v-for="section in sections" :key="'s:' + section.id"
+                             @mouseover="currentResource = resource.id; selectedDatetime = section.dateTime;"
+                             :id="resource.id + ':' + section.dateTime"
+                             class="data-row"
+                             style="flex: 0 0 80px; height: 50px; line-height: 50px; ">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENTS -->
+                <Event v-for="event in parsedEventsList" :key="event.id"
+                       :style="{'background-color': 'steelblue', 'border-radius': '10px', 'color': 'white'}"
+                       :text="event.title"
+                       :positioning="event.positioning"
+                ></Event>
+            </div>
+
         </div>
     </div>
 </template>
@@ -177,8 +188,8 @@
 
     .cal-container
         font-family: 'Montserrat', sans-serif;
-        max-height 100%
-        max-width 100%
+        max-height 100vh
+        max-width 100vw
 
     .cal-scroller
         max-height 100%

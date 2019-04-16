@@ -3,7 +3,6 @@
 
         <!-- DATE HEADERS -->
         <div style="display: flex;">
-            <div style="flex: 0 0 150px;"></div>
             <div style="flex: 1; display: flex;">
                 <div v-for="(header, index) in dateHeaders" :key="header.date"
                      class="cal-date-header"
@@ -16,7 +15,6 @@
 
         <!-- TIME HEADERS -->
         <div style="display: flex;">
-            <div style="flex: 0 0 150px;"></div>
             <div style="flex: 1; display: flex;">
                 <div v-for="section in sections" :key="section.id"
                      class="cal-time-header"

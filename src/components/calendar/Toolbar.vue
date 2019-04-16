@@ -34,6 +34,7 @@
     .cal-toolbar
         font-size larger
         font-weight bolder
+        padding 1vw
 
     .cal-toolbar .toolbar-side
         justify-content space-between
