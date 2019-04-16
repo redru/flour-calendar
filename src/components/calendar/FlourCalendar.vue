@@ -22,7 +22,8 @@
             <div v-for="resource in resources" :key="'r:' + resource.id"
                  style="display: flex;">
                 <!-- CELLS -->
-                <div style="display: inline-flex; flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px;">
+                <div :class="{'current-active': resource.id === currentResource}"
+                     style="display: inline-flex; flex: 0 0 130px; position: sticky; left: 0; z-index: 888; height: 50px; line-height: 50px;">
                     <span>{{resource.name}}</span>
                 </div>
 
@@ -32,7 +33,7 @@
                     <div v-for="section in sections" :key="'s:' + section.id"
                          @mouseover="currentResource = resource.id; selectedDatetime = section.dateTime;"
                          :id="resource.id + ':' + section.dateTime"
-                         class="data-row  "
+                         class="data-row"
                          style="flex: 0 0 80px; height: 50px; line-height: 50px; ">
                     </div>
                 </div>
@@ -130,7 +131,7 @@
             parsedEventsList: function() {
                 const parsedEvents = [];
 
-                /* const startDate = this.currentDate.clone();
+                const startDate = this.currentDate.clone();
                 const endDate = startDate.clone().add(this.PERIOD_LENGTH, 'days');
 
                 for (let event of this.events) {
@@ -149,6 +150,10 @@
 
                     const elementStart = document.getElementById(event.room.id + ':' + eventCheckin.format());
 
+                    if (!elementStart) {
+                        continue;
+                    }
+
                     parsedEvents.push({
                         id: event.id,
                         checkinDate: eventCheckin,
@@ -161,7 +166,7 @@
                             height: this.TIME_BOX_HEIGHT + 'px'
                         }
                     });
-                }*/
+                }
 
                 return parsedEvents;
             }
@@ -170,7 +175,10 @@
 </script>
 
 <style lang="stylus">
+    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
     .cal-container
+        font-family: 'Montserrat', sans-serif;
         max-height 100%
         max-width 100%
 
@@ -180,12 +188,13 @@
         overflow-y auto
         position relative
 
-    .cal-scroller::-webkit-scrollbar
-        width 0 !important
+    /*.cal-scroller::-webkit-scrollbar
+        width 0 !important*/
 
     .data-row
-        // border 1px solid lightgrey
+        border 1px solid lightgrey
         box-shadow 0 0 0 0 rgba(0,0,0,0)
+        box-sizing border-box
         transition 0.15s
 
     .data-row:hover

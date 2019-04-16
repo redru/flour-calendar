@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="display: flex;">
+  <div id="app" style="display: flex; justify-content: center;">
     <FlourCalendar :groups="groups"
                    :events="events"
     ></FlourCalendar>
@@ -49,8 +49,8 @@
           id: 1,
           room: { id: 1 },
           customer: { name: 'Luca Zenobi' },
-          checkinDate: moment(),
-          checkoutDate: moment().add(5, 'days')
+          checkinDate: moment().hours(10).minutes(0).seconds(0).format(),
+          checkoutDate: moment().add(5, 'days').hours(20).minutes(0).seconds(0).format()
         }]
       }
     }
@@ -63,6 +63,6 @@
   }
 
   #app {
-    width: 100%;
+    /*width: 80%;*/
   }
 </style>
